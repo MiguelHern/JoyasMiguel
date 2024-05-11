@@ -1,0 +1,98 @@
+{% extends 'home/index.html' %}
+{% block content %}
+{% load static %}
+<body>
+    <div class="layout">
+        <div class="layout__card">
+            <div class="layout__c-img">
+                <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 550px; height: 550px">
+            </div>
+            <div class="layout__right">
+                <div class="card__text">
+                    <h1 class="card__name">{{producto.nombre}}</h1>
+                    <p class="card__price">${{producto.precio}}</p>
+                    <p class="card__description">{{producto.descripcion}}</p>
+                </div>
+                <div class="card__c-button">
+                    <p class="card__status">{{producto.status}}</p>
+                    <a href="/AgregarCarrito/{{producto.id}}" class="card__button-addbag">
+                        Agregar a la bolsa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    *{
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+    .layout{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+    }
+    .layout__c-img{
+        width: 55%;
+    }
+    .layout__card{
+        margin-top: 1rem;
+        display: flex;
+        max-width: 1024px;
+        min-width: 548px;
+        padding: 2rem;
+
+        border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+        gap: 2rem;
+
+    }
+    .layout__right{
+        width: 45%;
+
+    }
+    .img__product{
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .card__text{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        height: 80%;
+    }
+    .card__name{
+        font-weight: 700;
+        font-size: 1.875rem;
+        line-height: 2.225rem;
+    }
+    .card__price{
+        font-size: 1.875rem;
+    }
+    .card__description{
+        font-size: 1rem;
+    }
+    .card__status{
+        font-size: 0.875rem;
+        color: #637381;
+    }
+    .card__c-button{
+        height: 20%;
+    }
+    .card__button-addbag{
+        border: 0;
+        font-size: 1rem;
+        padding: 0.75rem 2rem;
+        margin-top: 0.5rem;
+        border-radius: 6px;
+        background: #4F46E5;
+        color: white;
+        cursor: pointer;
+        transition: background-color 200ms ease-in-out;
+    }
+    .card__button-addbag:hover{
+        background: #007bff;
+    }
+</style>
+{% endblock %}

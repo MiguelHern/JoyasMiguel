@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Moto Nexus</title>
+    <!--Estilos-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" type="text/css" href="{% static '/estilos/reset.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/estilos/Principal.css'%}">
+
+    <!-- Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+
+    <!--Icono-->
+
+</head>
+<body>
+<div class="container">
+
+    {% if request.user.is_authenticated %}
+    <div class="header__store">
+    <div class="advices">
+        <div class="sesion">
+            <ul>
+                <li>
+                    <a href="#">
+
+                    </a>
+                </li>
+                <li>
+                    <div class="login__links-active">
+                        <div class="hover__tooltip">
+                            <div class="iniciales">
+                                {{ user.username|slice:":2" }}
+                            </div>
+                            <span class="completo">
+                                    {{ user.username }}
+                                </span>
+                        </div>
+                        <div class="ayuda">
+
+                        </div>
+                        <div class="ventana__perfil">
+                            <div class="perfil__perfil">
+                                <div class="perfil__iniciales">
+                                    {{ user.username|slice:":2" }}
+                                </div>
+                                &nbsp;&nbsp;
+                                <span class="perfil__completo">
+                                            {{ user.username }}
+                                    </span>
+                            </div>
+                            <div class="perfil__exit">
+                                <a href="{% url 'exit' %}">Salir</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <nav class="nav__store">
+        <div class="nav__logo">
+            <div class="logo__container">
+                <img src="{%static 'img/Logo.png'%}" style="width: 70px; height: 70px">
+            </div>
+        </div>
+        <div class="nav__links">
+            <ul class="links__list">
+                <li class="list__item list__item-active">
+                    <a href="{% url 'home' %}" class="list__link">Productos</a>
+                </li>
+                <li class="list__item">
+                    <a href="{% url 'marcas' %}" class="list__link">Marcas</a>
+                </li>
+                <li class="list__item">
+                    <a href="#" class="list__link">Categorías</a>
+                </li>
+            </ul>
+        </div>
+        <div class="nav__cart">
+            <div class="cart__search">
+                <form class="form__search">
+                    <label class="label__icon" for="nombre"><span class="material-symbols-outlined">search</span></label>
+                    <input class="search__input" type="text" id="nombre" name="nombre" placeholder="Buscar producto">
+                </form>
+            </div>
+            <div class="cart__login">
+                <a href="#">
+                    <span class="material-symbols-outlined">person</span>
+                </a>
+            </div>
+            <div class="cart__cart">
+                <a href="{% url 'carrito' %}">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    </div>
+
+    {% else %}
+    <div class="header__store">
+        <div class="advices">
+            <div class="sesion">
+                    <ul class="links__list">
+                        <li>
+                            <a href="#">Crear cuenta</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'ingresar' %}">Ingresar</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+        <div class="nav__store">
+            <div class="nav__logo">
+                <div class="logo__container">
+                    <img src="{%static 'img/Logo.png'%}" style="width: 70px; height: 70px">
+                </div>
+            </div>
+            <div class="nav__links">
+                <ul class="links__list">
+                    <li class="list__item list__item-active">
+                        <a href="#" class="list__link">Inicio</a>
+                    </li>
+                    <li class="list__item">
+                        <a href="#" class="list__link">Provedores</a>
+                    </li>
+                    <li class="list__item">
+                        <a href="#" class="list__link">Productos</a>
+                    </li>
+                    <li class="list__item">
+                        <a href="#" class="list__link">Marcas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+</div>
+</body>
+
+<style>
+    /* Estilo para el enlace activo */
+    .links__list a.active {
+        color: blue; /* Cambia el color del texto a azul */
+        /* O puedes cambiar el fondo del enlace */
+        /* background-color: blue; */
+        /* Y ajustar otros estilos según sea necesario */
+    }
+
+</style>
+
+</html>

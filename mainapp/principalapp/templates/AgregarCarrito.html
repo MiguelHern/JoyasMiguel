@@ -1,0 +1,69 @@
+{% extends 'home/index.html' %}
+{% block content %}
+{% load static %}
+<body>
+<div class="layout__cart">
+    <header>
+        <h1 class="header__title">Shopping Cart</h1>
+    </header>
+    <div class="main">
+
+        <section class="main__cart">
+            {%for objeto in productos%}
+            <div class="cart__item">
+                <div class="item__imgc" style="min-height: 192px; min-width: 192px">
+                    <a href="#">
+                        <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{objeto.img}}" style="height: 192px; width: 192px">
+                    </a>
+                </div>
+                <div class="item__info">
+                    <div class="info__data">
+                        <h6 class="item__name">{{objeto.nombre}}</h6>
+                        <span class="item__cat">{{objeto.descripcion}}</span>
+                        <h6 class="item__price">${{objeto.precio}}</h6>
+                        <h1>{{objeto.id}}</h1>
+
+                    </div>
+                    <div class="info__x">
+                        <div class="info__amount">
+                            <select id="amount" name="amount" class="form-control" required>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <a href="/eliminar_carrito/{{objeto.pk}}" class="p">
+                            <span class="material-symbols-outlined">close</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </section>
+
+        <section class="main__payment">
+            <h2 class="payment__order">Order Sumary</h2>
+            <div class="payment__info">
+                <div class="payment__subtotal">
+                    <span>Subtotal</span><span>$200</span>
+                </div>
+                <div class="payment__shipping">
+                    <span>Shipping estimate</span><span>$50</span>
+                </div>
+                <div class="payment__tax">
+                    <span>Tax estimate</span><span>$32</span>
+                </div>
+                <div class="payment__total">
+                    <span class="payment__totals">Order total</span><span>$121</span>
+                </div>
+            </div>
+            <button class="btn__checkout form-control">Checkout</button>
+        </section>
+    </div>
+</div>
+</body>
+
+
+{% endblock %}

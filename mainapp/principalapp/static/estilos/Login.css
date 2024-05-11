@@ -1,0 +1,124 @@
+:root {
+    --color-principal: #0078FF;
+    --background: #EAEAEB;
+
+    --texto: white;
+
+    --redondeado: 5px;
+    --redondeado2: 4px;
+
+    --family-principal: "Poppins";
+    --family-secundario: "Prompt";
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background);
+}
+
+
+
+/* Main */
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.contenedor__inicio {
+    width: auto;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 60px 30px;
+    border-radius: var(--redondeado);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.contenedor__inicio > div > input {
+    width: 450px;
+    height: 40px;
+
+    padding: 0 15px;
+    border: 1.5px solid rgba(0, 0, 0, 0.3);
+    border-radius: var(--redondeado2);
+
+    font-family: var(--family-principal);
+    font-size: 13px;
+}
+
+.contenedor__inicio > div > input::placeholder {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.contenedor__inicio > div > input:focus {
+    border: 1.5px solid var(--color-principal);
+    outline: none;
+}
+
+.contenedor__inicio > div > label {
+    font-family: var(--family-secundario);
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    padding-bottom: 10px;
+}
+
+.inicio__submit {
+    width: 450px;
+    height: 40px;
+
+    border: none;
+    border-radius: var(--redondeado2);
+
+    background-color: #9CA3AF;
+
+    color: var(--texto);
+    font-family: var(--family-secundario);
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.inicio__submit:hover {
+    background-color: #637381;
+}
+
+.contenedor__links > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+li {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.links__inclik{
+    font-family: var(--family-secundario);
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.links__pag {
+    cursor: pointer;
+    color: var(--color-principal);
+    text-decoration: underline;
+    text-decoration-color: var(--color-principal);;
+    text-decoration-thickness: 2px;
+}

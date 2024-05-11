@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Moto Nexus</title>
+
+    <!--Estilos-->
+    <link rel="stylesheet" type="text/css" href="{% static '/estilos/reset.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static '/estilos/login.css'%}">
+
+    <!-- Fuentes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <!--Icono-->
+
+</head>
+<body>
+<div class="container">
+    <main>
+        <form class="contenedor__inicio" action="{% url 'login' %}" method="post">
+            <img src="{%static 'img/Logo.png'%}" style="width: 100px; height: 100px">
+            {% csrf_token %}
+            <div class="">
+                <label for="InputEmail" class="">Correo electronico</label>
+                <input type="text" class="form-control" name="username" id="InputEmail" placeholder="Ingresa tu correo">
+            </div>
+            <div class="">
+                <label for="InputPassword" class="">Contraseña</label>
+                <input type="password" class="" name="password" id="InputPassword" placeholder="Ingresa tu contraseña">
+            </div>
+            <button class="inicio__submit" type="submit">Iniciar Sesión</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>
