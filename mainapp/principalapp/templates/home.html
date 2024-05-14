@@ -3,49 +3,126 @@
 {% load static %}
 <div class="layout__store">
     <main class="main__store">
+
         <section class="products">
             <h2 class="products__title">Charms</h2>
             <div class="products__items">
                 {% for producto in productos %}
                 {% if producto.categoria == 'charms' %}
+                {% if producto.status == 'Disponible' %}
                 <a href="/irProducto/{{producto.id}}" class="products__item" style="padding: 10px">
                     <div class="itemp__imgc">
                         <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 238px; min-height: 238px">
                     </div>
                     <div class="itemp__info">
-                        <span class="itemp__color">{{ producto.status }}</span>
+                        <span class="itemp__color">{{ producto.marca.nombre }}</span>
                         <h3 class="itemp__name">{{ producto.nombre|slice:":24" }}</h3>
                         <span class="itemp__price">${{ producto.precio }}</span>
                         <div class="itemp__color"></div>
                     </div>
                 </a>
-
+                {% endif %}
                 {% endif %}
                 {% endfor %}
             </div>
         </section>
+
+        {% if arete %}
         <section class="products">
             <h2 class="products__title">Aretes</h2>
             <div class="products__items">
                 {% for producto in productos %}
                 {% if producto.categoria == 'aretes' %}
+                {% if producto.status == 'Disponible' %}
                 <a href="/irProducto/{{producto.id}}" class="products__item" style="padding: 10px">
                     <div class="itemp__imgc">
                         <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 238px; min-height: 238px">
                     </div>
                     <div class="itemp__info">
-                        <span class="itemp__color">{{ producto.status }}</span>
+                        <span class="itemp__color">{{ producto.marca.nombre }}</span>
                         <h3 class="itemp__name">{{ producto.nombre|slice:":24" }}</h3>
                         <span class="itemp__price">${{ producto.precio }}</span>
                         <div class="itemp__color"></div>
                     </div>
-                    
                 </a>
-
+                {% endif %}
                 {% endif %}
                 {% endfor %}
             </div>
         </section>
+        {% endif %}
+        {% if brazalete %}
+        <section class="products">
+            <h2 class="products__title">Brazaletes</h2>
+            <div class="products__items">
+                {% for producto in productos %}
+                {% if producto.categoria == 'brazaletes' %}
+                {% if producto.status == 'Disponible' %}
+                <a href="/irProducto/{{producto.id}}" class="products__item" style="padding: 10px">
+                    <div class="itemp__imgc">
+                        <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 238px; min-height: 238px">
+                    </div>
+                    <div class="itemp__info">
+                        <span class="itemp__color">{{ producto.marca.nombre }}</span>
+                        <h3 class="itemp__name">{{ producto.nombre|slice:":24" }}</h3>
+                        <span class="itemp__price">${{ producto.precio }}</span>
+                        <div class="itemp__color"></div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+        {% if anillo %}
+        <section class="products">
+            <h2 class="products__title">Anillos</h2>
+            <div class="products__items">
+                {% for producto in productos %}
+                {% if producto.categoria == 'Anillos' %}
+                {% if producto.status == 'Disponible' %}
+                <a href="/irProducto/{{producto.id}}" class="products__item" style="padding: 10px">
+                    <div class="itemp__imgc">
+                        <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 238px; min-height: 238px">
+                    </div>
+                    <div class="itemp__info">
+                        <span class="itemp__color">{{ producto.marca.nombre }}</span>
+                        <h3 class="itemp__name">{{ producto.nombre|slice:":24" }}</h3>
+                        <span class="itemp__price">${{ producto.precio }}</span>
+                        <div class="itemp__color"></div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+        {% if collar %}
+        <section class="products">
+            <h2 class="products__title">Collares</h2>
+            <div class="products__items">
+                {% for producto in productos %}
+                {% if producto.categoria == 'collares' %}
+                {% if producto.status == 'Disponible' %}
+                <a href="/irProducto/{{producto.id}}" class="products__item" style="padding: 10px">
+                    <div class="itemp__imgc">
+                        <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 238px; min-height: 238px; max-height: 238px">
+                    </div>
+                    <div class="itemp__info">
+                        <span class="itemp__color">{{ producto.marca.nombre }}</span>
+                        <h3 class="itemp__name">{{ producto.nombre|slice:":24" }}</h3>
+                        <span class="itemp__price">${{ producto.precio }}</span>
+                        <div class="itemp__color"></div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
     </main>
 </div>
 <style>
@@ -55,6 +132,7 @@
     .products__item{
         position: relative;
         transition: all 300ms ease-in-out;
+        object-fit: cover;
     }
     .card__c-button{
         position: absolute;

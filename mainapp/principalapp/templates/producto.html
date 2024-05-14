@@ -10,11 +10,12 @@
             <div class="layout__right">
                 <div class="card__text">
                     <h1 class="card__name">{{producto.nombre}}</h1>
+                    <h2 class="card__status">{{producto.marca.nombre}}</h2>
                     <p class="card__price">${{producto.precio}}</p>
                     <p class="card__description">{{producto.descripcion}}</p>
                 </div>
                 <div class="card__c-button">
-                    <p class="card__status">{{producto.status}}</p>
+                    <p class="card__status">{{producto.stock}} Disponibles</p>
                     <a href="/AgregarCarrito/{{producto.id}}" class="card__button-addbag">
                         Agregar a la bolsa
                     </a>
@@ -71,7 +72,7 @@
         font-size: 1.875rem;
     }
     .card__description{
-        font-size: 1rem;
+        font-size: 0.875rem;
     }
     .card__status{
         font-size: 0.875rem;

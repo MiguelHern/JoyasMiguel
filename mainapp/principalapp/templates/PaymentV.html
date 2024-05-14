@@ -1,0 +1,81 @@
+{% extends 'home/index.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <div class="layout__cart">
+        <header>
+            <h1 class="header__title">Proceder al pago</h1>
+        </header>
+        <div class="main">
+            <section class="main__cart">
+                <div class="left">
+                    <h1>Agregue una dirección de envio</h1>
+                </div>
+                <div class="right">
+                    <div class="rightc">
+                        <label class="lab" for="Dirección">Dirección</label>
+                        <input class="form-control" id="Dirección" type="text" placeholder="Agregue su dirección">
+                    </div>
+                    <div class="rightc">
+                        <label class="lab" for="Colonia">Colonia</label>
+                        <input class="form-control" id="Colonia" type="text" placeholder="Agregue su colonia">
+                    </div>
+                    <div class="rightc">
+                        <label class="lab" for="CP">Código postal</label>
+                        <input class="form-control" id="CP" type="text" placeholder="Agregue su código postal">
+                    </div>
+                    <div class="rightc">
+                        <label class="lab" for="Ciudad">Ciudad</label>
+                        <input class="form-control" id="Ciudad" type="text" placeholder="Agregue su ciudad">
+                    </div>
+                    <div class="rightc">
+                        <label class="lab" for="Referencias">Referencias</label>
+                        <input class="form-control" id="Referencias" type="text" placeholder="Agregue referencias">
+                    </div>
+                </div>
+            </section>
+            <section class="main__payment">
+                <h2 class="payment__order">Order Sumary</h2>
+                <div class="payment__info">
+                    <div class="payment__subtotal">
+                        <span>Subtotal</span><span>${{subtotal}}</span>
+
+                    </div>
+                    <div class="payment__shipping">
+                        <span>Shipping estimate</span>
+                        {% if size_cart != 0 %}
+                        <span>$50</span>
+                        {% endif%}
+                    </div>
+                    <div class="payment__total">
+                        <span class="payment__totals">Order total</span>
+                        {% if size_cart != 0 %}
+                        <span>${{total}}</span>
+                        {% endif%}
+                    </div>
+                </div>
+                <a a href="{% url 'Payment' %}" class="btn__checkout form-control">Checkout</a>
+            </section>
+        </div>
+    </div>
+</div>
+<style>
+    .right{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .rightc{
+        display: flex;
+        width: 100%;
+    }
+    .lab{
+        width: 15%;
+    }
+    .form-control{
+        flex: 1;
+    }
+</style>
+{% endblock %}

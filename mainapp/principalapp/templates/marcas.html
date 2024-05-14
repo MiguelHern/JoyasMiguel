@@ -2,56 +2,35 @@
 {% block content %}
 {% load static %}
     <section class="main__categories">
-        <h2 class="categories__title">Categorías</h2>
+        <h2 class="categories__title">Marcas</h2>
         <div class="categories__items">
-            <div class="categories__item">
+            {% for marcas in marcas %}
+            <a href="/irMarcas/{{marcas.id}}" class="categories__item">
                 <div class="item__imgc">
-                    <img src="assets/img/buho.png" style="width: 216px; height: 216px" class="categories__img">
+                    <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{marcas.img}}" style="width: 216px; height: 216px" class="categories__img">
                 </div>
                 <div class="item__data">
-                    <span class="item__name">New Arrivals</span>
+                    <span class="item__name">{{marcas.nombre}}</span>
                     <span class="item__advice">Shop now</span>
                 </div>
-            </div>
-
-            <div class="categories__item">
-                <div class="item__imgc">
-                    <img src="assets/img/buho.png" style="width: 216px; height: 216px" class="categories__img">
-                </div>
-                <div class="item__data">
-                    <span class="item__name">New Arrivals</span>
-                    <span class="item__advice">Shop now</span>
-                </div>
-            </div>
-            <div class="categories__item">
-                <div class="item__imgc" style="width: 218px; height: 218px">
-                    <img src="assets/img/buho.png" style="width: 216px; height: 216px" class="categories__img">
-                </div>
-                <div class="item__data">
-                    <span class="item__name">New Arrivals</span>
-                    <span class="item__advice">Shop now</span>
-                </div>
-            </div>
-            <div class="categories__item">
-                <div class="item__imgc">
-                    <img src="assets/img/buho.png" style="width: 216px; height: 216px" class="categories__img">
-                </div>
-                <div class="item__data">
-                    <span class="item__name">New Arrivals</span>
-                    <span class="item__advice">Shop now</span>
-                </div>
-            </div>
-            <div class="categories__item">
-                <div class="item__imgc">
-                    <img src="assets/img/buho.png" style="width: 216px; height: 216px" class="categories__img">
-                </div>
-                <div class="item__data">
-                    <span class="item__name">New Arrivals</span>
-                    <span class="item__advice">Shop now</span>
-                </div>
-            </div>
+            </a>
+            {% endfor %}
         </div>
     </section>
+<style>
+    .item__imgc{
+
+    }
+    .categories__item{
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+    .item__data{
+        text-align: center;
+    }
+    .categories__img{
+        object-fit: fill;
+    }
+</style>
 
 
 {% endblock %}

@@ -85,27 +85,24 @@
                 <li class="list__item">
                     <a href="{% url 'marcas' %}" class="list__link">Marcas</a>
                 </li>
-                <li class="list__item">
-                    <a href="#" class="list__link">Categorías</a>
-                </li>
             </ul>
         </div>
         <div class="nav__cart">
             <div class="cart__search">
-                <form class="form__search">
-                    <label class="label__icon" for="nombre"><span class="material-symbols-outlined">search</span></label>
-                    <input class="search__input" type="text" id="nombre" name="nombre" placeholder="Buscar producto">
+                <form action="{% url 'buscador' %}" method="POST" class="form__search">
+                    {% csrf_token %}
+                    <label class="label__icon" for="buscador__productos"><span class="material-symbols-outlined">search</span></label>
+                    <input class="search__input" type="text" id="buscador__productos" name="buscador__productos" placeholder="Buscar producto">
                 </form>
+
             </div>
-            <div class="cart__login">
-                <a href="#">
-                    <span class="material-symbols-outlined">person</span>
-                </a>
-            </div>
-            <div class="cart__cart">
+            <div class="cart__cart" style="display: flex; align-items: center">
                 <a href="{% url 'carrito' %}">
                     <span class="material-symbols-outlined">shopping_bag</span>
                 </a>
+                {% if size_cart != 0 %}
+                <span style="cursor: default">{{size_cart}}</span>
+                {% endif%}
             </div>
         </div>
     </nav>
@@ -117,7 +114,7 @@
             <div class="sesion">
                     <ul class="links__list">
                         <li>
-                            <a href="#">Crear cuenta</a>
+                            <a href="{% url 'registro' %}">Crear cuenta</a>
                         </li>
                         <li>
                             <a href="{% url 'ingresar' %}">Ingresar</a>

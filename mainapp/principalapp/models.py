@@ -22,6 +22,7 @@ class Productos(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     img = models.FileField(upload_to='image-svc')
     status = models.CharField(max_length=20)
+    stock = models.IntegerField(default=0)
     CATEGORIA_CHOICES = [
         ('charms', 'charms'),
         ('aretes', 'aretes'),

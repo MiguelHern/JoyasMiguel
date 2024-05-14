@@ -209,8 +209,6 @@ a{
 .main__cart{
     width: 70%;
 }
-
-
 .main__payment{
     width: 30%;
 }
@@ -332,7 +330,6 @@ a{
     gap: 4rem;
     margin-top: 2rem;
     flex-wrap: wrap;
-    cursor: pointer;
 }
 .categories__item{
     width: 216px;

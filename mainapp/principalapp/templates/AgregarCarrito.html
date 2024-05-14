@@ -1,13 +1,18 @@
 {% extends 'home/index.html' %}
 {% block content %}
 {% load static %}
-<body>
+<div>
 <div class="layout__cart">
     <header>
         <h1 class="header__title">Shopping Cart</h1>
     </header>
     <div class="main">
-
+        {% if tamano == 0 %}
+        <div class="main__cart" style="text-align: center">
+            <span class="material-symbols-outlined" style="font-size: 180px;">shopping_bag</span>
+            <h1 style="font-weight: lighter">Empiece a agregar productos a la bolsa</h1>
+        </div>
+        {%else%}
         <section class="main__cart">
             {%for objeto in productos%}
             <div class="cart__item">
@@ -21,49 +26,71 @@
                         <h6 class="item__name">{{objeto.nombre}}</h6>
                         <span class="item__cat">{{objeto.descripcion}}</span>
                         <h6 class="item__price">${{objeto.precio}}</h6>
-                        <h1>{{objeto.id}}</h1>
 
                     </div>
-                    <div class="info__x">
-                        <div class="info__amount">
-                            <select id="amount" name="amount" class="form-control" required>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                    <div class="informacion__contador">
+                        <div class="contador__contenedor">
+                            <a href="/eliminar_carrito/{{objeto.pk}}" class="contadormenos" style="text-align: center">-</a>
+                            <div id="numeroContador" class="contadornum" style="cursor:default; text-align: center">
+                                {% for key, value in contador_ids.items %}
+                                {% if key == objeto.pk %}
+                                {{ value }}<br>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a href="/AgregarCarrito/{{objeto.pk}}" class="contadormas" style="text-align: center">+</a>
                         </div>
-                        <a href="/eliminar_carrito/{{objeto.pk}}" class="p">
-                            <span class="material-symbols-outlined">close</span>
-                        </a>
                     </div>
                 </div>
             </div>
             {%endfor%}
         </section>
-
+        {%endif%}
         <section class="main__payment">
             <h2 class="payment__order">Order Sumary</h2>
             <div class="payment__info">
                 <div class="payment__subtotal">
-                    <span>Subtotal</span><span>$200</span>
+                    <span>Subtotal</span><span>${{subtotal}}</span>
+
                 </div>
                 <div class="payment__shipping">
-                    <span>Shipping estimate</span><span>$50</span>
-                </div>
-                <div class="payment__tax">
-                    <span>Tax estimate</span><span>$32</span>
+                    <span>Shipping estimate</span>
+                    {% if size_cart != 0 %}
+                    <span>$50</span>
+                    {% endif%}
                 </div>
                 <div class="payment__total">
-                    <span class="payment__totals">Order total</span><span>$121</span>
+                    <span class="payment__totals">Order total</span>
+                    {% if size_cart != 0 %}
+                    <span>${{total}}</span>
+                    {% endif%}
                 </div>
             </div>
-            <button class="btn__checkout form-control">Checkout</button>
+            <a a href="{% url 'Payment' %}" class="btn__checkout form-control">Checkout</a>
         </section>
     </div>
 </div>
-</body>
-
+</div>
+<style>
+    .contador__contenedor{
+        background-color: white;
+        color: #111827;
+        border: 1px solid #111827;
+        border-radius: 10px;
+    }
+    .contadormenos, .contadormas, .contadornum{
+        padding: 7px;
+    }
+    .contadormas:hover{
+        background-color: #4F46E5;
+        color: #ffffff;
+        border-radius: 0 0 9px 9px;
+    }
+    .contadormenos:hover{
+        background-color: #4F46E5;
+        color: #ffffff;
+        border-radius: 9px 9px 0 0;
+    }
+</style>
 
 {% endblock %}

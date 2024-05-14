@@ -1,0 +1,58 @@
+{% extends 'home/index.html' %}
+{% block content %}
+{% load static %}
+<div class="layout__store">
+    <main class="main__store">
+        <section class="products">
+            <div class="products__items">
+                {% for producto in productos %}
+                {% if producto.status == 'Disponible' and producto.marca.id == marca.id %}
+                <a href="/irProducto/{{producto.id}}" class="products__item" style="padding: 10px">
+                    <div class="itemp__imgc">
+                        <img src="https://res.cloudinary.com/dnbwjuwvx/image/upload/v1713926110/{{producto.img}}" alt="" class="img__product" style="width: 238px; min-height: 238px; max-height: 238px">
+                    </div>
+                    <div class="itemp__info">
+                        <span class="itemp__color">{{ producto.marca.nombre }}</span>
+                        <h3 class="itemp__name">{{ producto.nombre|slice:":24" }}</h3>
+                        <span class="itemp__price">${{ producto.precio }}</span>
+                        <div class="itemp__color"></div>
+                    </div>
+                </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</div>
+<style>
+    .card__c-button {
+        display: none;
+    }
+    .products__item{
+        position: relative;
+        transition: all 300ms ease-in-out;
+    }
+    .card__c-button{
+        position: absolute;
+        bottom: 50%;
+    }
+    .products__item:hover .card__c-button {
+        display: block;
+    }
+    .card__button-addbag{
+        border: 0;
+        font-size: 1rem;
+        padding: 0.75rem 2rem;
+        margin-top: 0.5rem;
+        border-radius: 6px;
+        background: #4F46E5;
+        color: white;
+        cursor: pointer;
+        transition: background-color 200ms ease-in-out;
+
+    }
+    .card__button-addbag:hover{
+        background: #007bff;
+    }
+</style>
+{% endblock %}
